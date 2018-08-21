@@ -1,0 +1,107 @@
+<script>
+'use strict'
+/*https://habr.com/company/ruvds/blog/334538/*/
+	
+	/*▍Простые задания*/
+
+		/*1. Реализуйте функцию isPrime(), которая возвращает true или false, указывая, является ли переданное ей число простым.
+
+			isPrime(0)                          // false
+			isPrime(1)                          // false
+			isPrime(17)                         // true
+			isPrime(10000000000000)             // false*/
+
+			function isPrime(num) {			
+				if (num <= 2) console.log(false);
+				else {
+
+					let bool = true;
+					for (let i = 2; i < num; i++){
+						if(num % i === 0) {
+							bool = false;
+							break;
+						}
+					}
+					console.log(bool);
+				}
+			}
+
+
+		/* 2.Реализуйте функцию factorial(), которая возвращает факториал переданного ей числа.
+
+			factorial(0)                        // 1
+			factorial(1)                        // 1
+			factorial(6)                        // 720*/
+
+				function factorial(num) {
+					let result = 1;
+
+					for (let i = 1; i <= num; i++) {
+						result *= i;
+					}
+					console.log(result)
+				}
+
+		/* 3.Реализуйте функцию fib(), возвращающую n-ное число Фибоначчи.
+
+			fib(0)                              // 0
+			fib(1)                              // 1
+			fib(10)                             // 55
+			fib(20)                             // 6765*/
+
+			function fib(num) {
+				let a = 1, b = 1, c = 0;
+
+				for (let i = 0; i < num; i++) {
+					a = b; b = c;
+					c = a + b;
+				}			
+				console.log(c);
+			}
+
+		/*4. Реализуйте функцию isSorted(), которая возвращает true или false в зависимости о того, отсортирован ли переданный ей числовой массив.
+
+			isSorted([])                        // true
+			isSorted([-Infinity, -5, 0, 3, 9])  // true
+			isSorted([3, 9, -3, 10])            // false*/
+
+				function isSorted(arr) {
+					let bool = true;
+
+					for (let i = 0; i < arr.length; i++) {
+						if ((arr[i] > arr[i+1])) {
+							bool = false;
+							break;
+						}
+					}
+					console.log(bool);
+				}
+
+		/*5. Создайте собственную реализацию функции filter().*/
+
+			filter([1, 2, 3, 4], n => n < 3)    // [1, 2]
+
+			function filter(arr, fun) {
+				
+			}
+
+
+		permute('')             // []
+		permute('abc')          // ['abc', 'acb', 'bac', 'bca', 'cab', 'cba']
+
+	/*▍Задания средней сложности*/
+
+		/*1. Реализуйте функцию fib2(). Она похожа на функцию fib() из предыдущей группы заданий, но поддерживает числа вплоть до 50. Подсказка: используйте мемоизацию.*/
+
+
+	/*▍Сложные задания
+		Некоторые задания из этой группы связаны с созданием структур данных. Не нужно запоминать все тонкости их функционирования, достаточно понимания их устройство, при этом сведения о предоставляемом ими интерфейсе можно найти в интернете. Далее, нужно знать, для чего эти структуры данных используются, каковы их ограничения в сравнении с другими структурами данных.*/
+
+	/*1. Реализуйте функцию permute(), которая возвращает массив строк, содержащий все пермутации заданной строки.*/
+		function permute(string) {
+			let arr = [];
+			
+			console.log(arr)
+		}
+
+</script> 
