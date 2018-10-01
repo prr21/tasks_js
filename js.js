@@ -71,7 +71,8 @@
 				return true;
 			}
 
-		/*5. Создайте собственную реализацию функции filter().			
+		/*5. Создайте собственную реализацию функции filter().	
+
 			console.log(filter([1, 2, 3, 4], n => n < 3))   // [1, 2]*/
 				
 			function filter(arr, fun) {
@@ -86,6 +87,7 @@
 			}
 
 		/*6. Создайте собственную реализацию функции reduce().
+		
 			console.log(reduce([1, 2, 3, 4], (a, b) => a + b, 0)) // 10*/
 
 			function reduce(arr, fun){
@@ -112,20 +114,21 @@
 				return newString;
 			}
 		
-		/*8. Создайте собственную реализацию функции indexOf() для массивов.
+		/*8. Создайте собственную реализацию функции indexOf() для массивов.*/
 		
 			console.log(indexOf([1, 2, 3], 1))               // 0
-			console.log(indexOf([1, 2, 3], 4)) 	            // -1*/
+			console.log(indexOf([1, 2, 3], 4)) 	            // -1
+			console.log(indexOf([1, 2, 3], 2)) 	            // -1
+			console.log(indexOf([1, 2, 3], 3)) 	            // -1
+			console.log(indexOf([1, 2, 3], 6)) 	            // -1
 
 			function indexOf(arr, index){
-				let result;
-
 				for (let i = 0; i < arr.length; i++) {
 					if(arr[i] == index) {
-						result = i;
-						break
-					}else result = -1;
-				}return result;
+						return i;
+					};
+				};
+				return -1;
 			}
 		
 
