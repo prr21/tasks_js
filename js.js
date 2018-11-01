@@ -181,14 +181,14 @@
 		}
 		
 		/*11. Реализуйте функцию isBalanced() которая принимает строку и возвращает true или false, 
-			указывая на то, сбалансированы ли фигурные скобки, находящиеся в строке.*/
+			указывая на то, сбалансированы ли фигурные скобки, находящиеся в строке.
 		
 		isBalanced('}{')                      // false
 		isBalanced('{{}')                     // false
 		isBalanced('{}{}')                    // true
 		isBalanced('foo { bar { baz } boo }') // true
 		isBalanced('foo { bar { baz }')       // false
-		isBalanced('foo { bar } }')           // false
+		isBalanced('foo { bar } }')           // false*/
 
 		function isBalanced(string) {
 			let openBracket  = [],
@@ -215,12 +215,36 @@
 	/*▍Задания средней сложности*/
 
 		/*1. Реализуйте функцию fib2(). Она похожа на функцию fib() из предыдущей группы заданий, 
-			но поддерживает числа вплоть до 50. Подсказка: используйте мемоизацию.
+			но поддерживает числа вплоть до 50. Подсказка: используйте мемоизацию.*/
 
-		fib2(0)                               // 0
-		fib2(1)                               // 1
-		fib2(10)                              // 55
-		fib2(50)                              // 12586269025 */
+		const memoize = (fn) => {
+			let cache = {};
+
+			return (args) => {
+				let num = args[0];
+
+				if (num in cache) {
+		  			return cache[num];
+		  		} else {
+		  			let result = fn(num);
+		  			cache[num] = result;
+		  			return result;
+		  		}
+		  	}
+		}
+
+		const fib2 = memoize(
+			(num) => {
+				return num <= 1 ? num : fib2(num - 1) + fib2(num - 2);
+			}
+		);
+		/*		
+		console.log(fib2(0))                               // 0
+		console.log(fib2(1))                               // 1
+		console.log(fib2(10))                              // 55
+		console.log(fib2(50))                              // 12586269025*/
+
+		
 
 		/*2. Реализуйте функцию isBalanced2(). Она похожа на функцию isBalanced()
 			из предыдущей группы заданий, но поддерживает три типа скобок: фигурные {},
