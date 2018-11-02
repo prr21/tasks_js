@@ -220,7 +220,7 @@
 		const memoize = (fn) => {
 			let cache = {};
 
-			return (args) => {
+			return (...args) => {
 				let num = args[0];
 
 				if (num in cache) {
@@ -238,11 +238,11 @@
 				return num <= 1 ? num : fib2(num - 1) + fib2(num - 2);
 			}
 		);
-		/*		
+				
 		console.log(fib2(0))                               // 0
 		console.log(fib2(1))                               // 1
 		console.log(fib2(10))                              // 55
-		console.log(fib2(50))                              // 12586269025*/
+		console.log(fib2(50))                              // 12586269025
 
 		
 
