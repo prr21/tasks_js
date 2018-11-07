@@ -183,33 +183,33 @@
 		/*11. Реализуйте функцию isBalanced() которая принимает строку и возвращает true или false, 
 			указывая на то, сбалансированы ли фигурные скобки, находящиеся в строке.
 		
-		isBalanced('}{')                      // false
-		isBalanced('{{}')                     // false
-		isBalanced('{}{}')                    // true
-		isBalanced('foo { bar { baz } boo }') // true
-		isBalanced('foo { bar { baz }')       // false
-		isBalanced('foo { bar } }')           // false*/
+			isBalanced('}{')                      // false
+			isBalanced('{{}')                     // false
+			isBalanced('{}{}')                    // true
+			isBalanced('foo { bar { baz } boo }') // true
+			isBalanced('foo { bar { baz }')       // false
+			isBalanced('foo { bar } }')           // false*/
 
-		function isBalanced(string) {
-			let openBracket  = [],
-				closeBracket = [];
+			function isBalanced(string) {
+				let openBracket  = [],
+					closeBracket = [];
 
-			for (let i = 0; i < string.length; i++) {
-				if (string[i] == '{') {
-					openBracket.push(string[i])
-				}if (string[i] == '}') {
-					closeBracket.push(string[i])
+				for (let i = 0; i < string.length; i++) {
+					if (string[i] == '{') {
+						openBracket.push(string[i])
+					}if (string[i] == '}') {
+						closeBracket.push(string[i])
+					}
+
+					if (closeBracket.length > openBracket.length) {
+						return console.log(false)
+					}
 				}
-
-				if (closeBracket.length > openBracket.length) {
-					return console.log(false)
-				}
+				if (openBracket.length === closeBracket.length) {
+					return console.log(true)
+				} 
+				return false
 			}
-			if (openBracket.length === closeBracket.length) {
-				return console.log(true)
-			} 
-			return false
-		}
 		
 
 	/*▍Задания средней сложности*/
@@ -217,32 +217,32 @@
 		/*1. Реализуйте функцию fib2(). Она похожа на функцию fib() из предыдущей группы заданий, 
 			но поддерживает числа вплоть до 50. Подсказка: используйте мемоизацию.*/
 
-		const memoize = (fn) => {
-			let cache = {};
+			const memoize = (fn) => {
+				let cache = {};
 
-			return (...args) => {
-				let num = args[0];
+				return (...args) => {
+					let num = args[0];
 
-				if (num in cache) {
-		  			return cache[num];
-		  		} else {
-		  			let result = fn(num);
-		  			cache[num] = result;
-		  			return result;
-		  		}
-		  	}
-		}
-
-		const fib2 = memoize(
-			(num) => {
-				return num <= 1 ? num : fib2(num - 1) + fib2(num - 2);
+					if (num in cache) {
+			  			return cache[num];
+			  		} else {
+			  			let result = fn(num);
+			  			cache[num] = result;
+			  			return result;
+			  		}
+			  	}
 			}
-		);
-				
-		/*console.log(fib2(0))                               // 0
-		console.log(fib2(1))                               // 1
-		console.log(fib2(10))                              // 55
-		console.log(fib2(50))                              // 12586269025*/
+
+			const fib2 = memoize(
+				(num) => {
+					return num <= 1 ? num : fib2(num - 1) + fib2(num - 2);
+				}
+			);
+					
+			/*console.log(fib2(0))                               // 0
+			console.log(fib2(1))                               // 1
+			console.log(fib2(10))                              // 55
+			console.log(fib2(50))                              // 12586269025*/
 
 		
 
@@ -256,21 +256,34 @@
 			isBalanced2('foo { (bar [baz] } )')      // false*/
 
 		/*3. Реализуйте функцию uniq(), которая принимает массив чисел и возвращает уникальные числа,
-			айденные в нём. Может ли функция решить эту задачу за время O(N)?*/
+			найденные в нём. Может ли функция решить эту задачу за время O(N)?
 		
-		uniq([])                              // []
-		uniq([1, 4, 2, 2, 3, 4, 8])           // [1, 4, 2, 3, 8]
+			uniq([])                              // []
+			uniq([1, 4, 2, 2, 3, 4, 8])           // [1, 4, 2, 3, 8]*/
 
-		function uniq(array){
-			 return console.log(array.filter((item, i, arr) => arr.indexOf(item) === i));
-		}
+			function uniq(array){
+				 return console.log(array.filter((item, i, arr) => arr.indexOf(item) === i));
+			}
 
 		/*4. Реализуйте функцию intersection(), которая принимает два массива и возвращает их пересечение. 
-			ожете ли вы добиться того, чтобы функция решала эту задачу за время O(M+N), 
+			сможете ли вы добиться того, чтобы функция решала эту задачу за время O(M+N), 
 			де M и N — длины массивов?
 
 			ntersection([1, 5, 4, 2], [8, 91, 4, 1, 3])    // [4, 1]
 			ntersection([1, 5, 4, 2], [7, 12])             // []*/
+
+			function ntersection(arr1, arr2) {
+				var result = [];
+
+				for (let i = 0; i < arr2.length; i++) {
+					if( arr1.indexOf(arr2[i]) !== -1 ) {
+						result.push(arr2[i]);
+					}
+				}
+				console.log(result)
+			}
+
+
 
 		/*5. Создайте реализацию функции sort(), которая сортирует числовой массив за время O(N×log(N)).
 
