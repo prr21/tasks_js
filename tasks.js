@@ -1,9 +1,8 @@
 /*https://habr.com/company/ruvds/blog/334538/*/
 'use strict'
 
-	/*▍Простые задания*/
-
-		
+/*Простые задания*/
+	
 	/*1.*/	function isPrime(num) {
 				if (num <= 2) return false;
 
@@ -35,27 +34,14 @@
 				return c;
 			}
 
-		/*4. Реализуйте функцию isSorted(), которая возвращает true или false в зависимости о того,
-		 	отсортирован ли переданный ей числовой массив.
-
-			isSorted([]) 						// true
-			isSorted([-Infinity, -5, 0, 3, 9])  // true
-			isSorted([3, 9, -3, 10])		    // false*/
-
-			function isSorted(arr) {
+	/*4.*/	function isSorted(arr) {
 				for (let i = 0; i < arr.length; i++) {
-					if (arr[i] > arr[i+1]) {
-						return false;
-					}
+					if (arr[i] > arr[i+1]) return false;
 				}
 				return true;
 			}
 
-		/*5. Создайте собственную реализацию функции filter().	
-
-			filter([1, 2, 3, 4], n => n < 3)    // [1, 2]*/
-				
-			function filter(arr, fun) {
+	/*5.*/	function filter(arr, fun) {
 				let resultArr = [];
 
 				for(let i=0; i < arr.length; i++){
@@ -66,11 +52,7 @@
 				return resultArr;
 			}
 
-		/*6. Создайте собственную реализацию функции reduce().
-		
-			reduce([1, 2, 3, 4], (a, b) => a + b, 0)   // 10*/
-
-			function reduce(arr, fun){
+	/*6.*/	function reduce(arr, fun){
 				let resultArr = arr[0];
 
 				for(let i = 1; i < arr.length; i++){
@@ -79,27 +61,16 @@
 				return resultArr;
 			}
 
-		/*7. Реализуйте функцию reverse(), которая обращает порядок следования символов переданной ей строки.
-			Не пользуйтесь встроенной функцией reverse().
-			
-			reverse('') 	                      // ''
-			reverse('abcdef')                     // 'fedcba'*/
-
-			function reverse(string) {
+	/*7.*/	function reverse(string) {
 				let newString = '';
 
-				for(let i = string.length - 1; i>=0; i--){
+				for(let i = string.length - 1; i >= 0; i--){
 					newString += string[i];
 				}
 				return newString;
 			}
 		
-		/*8. Создайте собственную реализацию функции indexOf() для массивов.
-		
-			indexOf([1, 2, 3], 1)                   // 0
-			indexOf([1, 2, 3], 4)   	            // -1*/
-
-			function indexOf(arr, index) {
+	/*8.*/	function indexOf(arr, index) {
 				for (let i = 0; i < arr.length; i++) {
 					if(arr[i] == index) {
 						return i;
@@ -108,17 +79,7 @@
 				return -1;
 			}
 		
-
-
-		/*9. Реализуйте функцию isPalindrome(), которая возвращает true или false в зависимости от того,
-			является ли переданная ей строка палиндромом (функция нечувствительна к регистру и
-			к наличию в строке пробелов).
-			
-			isPalindrome('') 		                          // true
-			isPalindrome('abcdcba')                           // true
-			isPalindrome('abcda')                             // false*/
-
-			function isPalindrome(string){
+	/*9.*/	function isPalindrome(string){
 				string = string.split(' ').join('').toLowerCase();
 				let mL = Math.floor(string.length / 2); // mL - middleLetter;
 			
@@ -131,21 +92,7 @@
 				return true;
 			}
 		
-		/*10. Реализуйте функцию missing(), которая принимает неотсортированный массив уникальных чисел 
-			(то есть, числа в нём не повторяются) от 1 до некоего числа n, и возвращает число,
-			отсутствующее в последовательности.
-			Там может быть либо одно отсутствующее число, либо их может не быть вовсе.
-			
-			Способны ли вы добиться того, чтобы функция решала задачу за время O(N)?
-			Подсказка: есть одна хорошая формула, которой вы можете воспользоваться.
-			
-			missing([]) 		                  // undefined
-			missing([1, 4, 3])                    // 2
-			missing([2, 3, 4])                    // 1
-			missing([5, 1, 4, 2])                 // 3
-			missing([1, 2, 3, 4])                 // undefined*/
-	
-			function missing(arr) {
+	/*10.*/	function missing(arr) {
 				for (let i = 1; i < arr.length; i++) {
 					if (arr.indexOf(i) == -1) return i;
 				}
@@ -162,17 +109,7 @@
 			return arrMissed)*
 		}
 		
-		/*11. Реализуйте функцию isBalanced() которая принимает строку и возвращает true или false, 
-			указывая на то, сбалансированы ли фигурные скобки, находящиеся в строке.
-		
-			isBalanced('}{')                      // false
-			isBalanced('{{}')                     // false
-			isBalanced('{}{}')                    // true
-			isBalanced('foo { bar { baz } boo }') // true
-			isBalanced('foo { bar { baz }')       // false
-			isBalanced('foo { bar } }')           // false*/
-
-			function isBalanced(string) {
+	/*11.*/	function isBalanced(string) {
 				let openBracket  = [],
 					closeBracket = [];
 
@@ -194,12 +131,9 @@
 			}
 		
 
-	/*▍Задания средней сложности*/
+/*Задания средней сложности*/
 
-		/*1. Реализуйте функцию fib2(). Она похожа на функцию fib() из предыдущей группы заданий, 
-			но поддерживает числа вплоть до 50. Подсказка: используйте мемоизацию.*/
-
-			const memoize = (fn) => {
+	/*1.*/	const memoize = (fn) => {
 				let cache = {};
 
 				return (...args) => {
@@ -220,41 +154,22 @@
 					return num <= 1 ? num : fib2(num - 1) + fib2(num - 2);
 				}
 			);
-					
-			/*fib2(0))                               // 
-			fib2(1))                               // 
-			fib2(10))                              // 5
-			fib2(50))                              // 12586269025*
+								
 
-		
+	/*2. Реализуйте функцию isBalanced2(). Она похожа на функцию isBalanced()
+		из предыдущей группы заданий, но поддерживает три типа скобок: фигурные {},
+		квадратные [], и круглые (). При передаче функции строки, в которой имеются неправильные
+		скобочные последовательности, функция должна возвращать false.
 
-		/*2. Реализуйте функцию isBalanced2(). Она похожа на функцию isBalanced()
-			из предыдущей группы заданий, но поддерживает три типа скобок: фигурные {},
-			квадратные [], и круглые (). При передаче функции строки, в которой имеются неправильные
-			скобочные последовательности, функция должна возвращать false.
-	
-			isBalanced2('(foo { bar (baz) [boo] })') // true
-			isBalanced2('foo { bar { baz }')         // false
-			isBalanced2('foo { (bar [baz] } )')      // false*/
+		isBalanced2('(foo { bar (baz) [boo] })') // true
+		isBalanced2('foo { bar { baz }')         // false
+		isBalanced2('foo { (bar [baz] } )')      // false*/
 
-		/*3. Реализуйте функцию uniq(), которая принимает массив чисел и возвращает уникальные числа,
-			найденные в нём. Может ли функция решить эту задачу за время O(N)?
-		
-			uniq([])                              // []
-			uniq([1, 4, 2, 2, 3, 4, 8])           // [1, 4, 2, 3, 8]*/
-
-			function uniq(array){
+	/*3.*/	function uniq(array){
 				 return array.filter((item, i, arr) => arr.indexOf(item) === i);
 			}
 
-		/*4. Реализуйте функцию intersection(), которая принимает два массива и возвращает их пересечение. 
-			сможете ли вы добиться того, чтобы функция решала эту задачу за время O(M+N), 
-			де M и N — длины массивов?
-
-			ntersection([1, 5, 4, 2], [8, 91, 4, 1, 3])    // [4, 1]
-			ntersection([1, 5, 4, 2], [7, 12])             // []*/
-
-			function ntersection(arr1, arr2) {
+	/*4.*/	function ntersection(arr1, arr2) {
 				var result = [];
 
 				for (let i = 0; i < arr2.length; i++) {
@@ -272,15 +187,7 @@
 			sort([])                              // []
 			sort([-4, 1, Infinity, 3, 3, 0])      // [-4, 0, 1, 3, 3, Infinity]*/
 
-		/*6. Реализуйте функцию includes(), которая возвращает true или false в зависимости от того, 
-			встречается ли переданное ей число в переданном ей отсортированном массиве. 
-			Может ли функция решить эту задачу за время O(log(N))?
-	
-			includes([1, 3, 8, 10], 8)            // true
-			includes([1, 3, 8, 8, 15], 15)        // true
-			includes([1, 3, 8, 10, 15], 9)        // false*/
-
-			function includes(arr, num) {
+	/*6.*/	function includes(arr, num) {
 				return arr.indexOf(num) !== -1;
 			}
 
